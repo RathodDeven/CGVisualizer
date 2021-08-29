@@ -10,7 +10,8 @@
   <meta name="description" content="">
   
   
-  <title>Circle</title>
+  <title>Polygon</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -58,7 +59,7 @@
                     </div>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="#bottom">About</a></li>
+                    <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="#content1-b">Algorithm</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link link text-black dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">Features</a>
                             <div class="dropdown-menu">
@@ -83,7 +84,7 @@
         <div class="row justify-content-center">
             
         <h4 class="card-title mbr-fonts-style mb-4 display-2">
-            <strong>Polygon Translation, Rotation , Scaling </strong>
+            <strong>Polygon Transformations </strong>
         </h4>
         </div>
         <div><label>Boundaries : </label> Max X = 500 , Min X = -500 , Max Y = 275 , Min Y = -275</div>
@@ -91,11 +92,26 @@
         <div><label>Save Polygon : </label> <button id="done">Save</button></div>
         <div><label>Translation : </label> <input type="text" id="tx" placeholder="tx">  <input type="text" id="ty" placeholder="ty"> <button id="translate">Translate</button></div>
         <div><label>Scaling : </label> </div>
-            <div>Fixed Point : <input type="text" id="fsx" placeholder="x"> <input type="text" id="fsy" placeholder="y">  Scaling Factors :  <input type="text" id="sx" placeholder="sx"> <input type="text" id="sy" placeholder="sy"> <button id="scale">scale</button></div>
+            <div>Fixed Point : <input type="text" id="fsx" placeholder="x"> <input type="text" id="fsy" placeholder="y">  Scaling Factors :  <input type="text" id="sx" placeholder="sx"> <input type="text" id="sy" placeholder="sy"> <button id="scale">Scale</button></div>
         
         <div><label>Rotation  :</label> </div>
-        <div>Fixed Point : <input type="text" id="frx" placeholder="x"> <input type="text" id="fry" placeholder="y">  Angle of Rotation :  <input type="text" id="angle" placeholder="angle in degrees"> <button id="rotate">rotate</button></div> 
-        <div><label><button id="draw">Draw</button></label><label><button id="reset" >Reset</button></label> </div>
+        <div>Fixed Point : <input type="text" id="frx" placeholder="x"> <input type="text" id="fry" placeholder="y">  Angle of Rotation :  <input type="text" id="angle" placeholder="angle in degrees"> <button id="rotate">Rotate</button></div> 
+        <div><label>Shearing : </label> </div>
+        <div>Fixed Point : <input type="text" id="fshx" placeholder="x"> <input type="text" id="fshy" placeholder="y">  Shear Factors :  <input type="text" id="shx" placeholder="shx"> <input type="text" id="shy" placeholder="shy"> <button id="shear">Shear</button></div> 
+
+        <div>
+            <br>
+            <label>Reflections : </label>
+            <label><button id="refo">Reflect about origin</button></label>
+            <label><button id="refx">Reflect about X axis</button></label>
+            <lable><button id="refy">Reflect about Y axis</button></label>
+            <label><button id="refxy">Reflect about X=Y line</button></label>
+            <label><button id="refxmy">Reflect about X=-Y line</button></label>
+            
+            
+            </div>
+        <div>
+            <label><button id="reset" >Reset</button></label> </div>
         
         <div>
         <canvas id="canvas" width="1000" height="550" style="border: 1px solid #000000;">
@@ -105,38 +121,42 @@
     </div>
 </section>
 
+<section class="content1 cid-s48vaXqeL6" id="content1-b">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-md-9">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Algorithm</strong></h3>
+<h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-7">Translation : <a href="https://www.javatpoint.com/computer-graphics-translation">https://www.javatpoint.com/computer-graphics-translation</a> </h4>
+<h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-7">Scaling : <a href="https://www.javatpoint.com/computer-graphics-scaling">https://www.javatpoint.com/computer-graphics-scaling</a> </h4>
+<h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-7">Rotation : <a href="https://www.javatpoint.com/computer-graphics-rotation">https://www.javatpoint.com/computer-graphics-rotation</a> </h4>
+<h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-7">Shearing : <a href="https://www.javatpoint.com/computer-graphics-shearing">https://www.javatpoint.com/computer-graphics-shearing</a> </h4>
+<h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-7">Reflection : <a href="https://www.javatpoint.com/computer-graphics-reflection">https://www.javatpoint.com/computer-graphics-reflection</a> </h4>
+            
+            </div>
+        </div>
+    </div>
+</section>
 
 
-<section class="footer3 cid-s48P1Icc8J" once="footers" id="footer3-l">
 
-    
-
-    
-
+<section class="footer3 cid-s48P1Icc8J" once="footers" id="footer3-i">
     <div class="container">
         <div class="media-container-row align-center mbr-white">
-            <div class="row row-links">
-                <ul class="foot-menu">
-                    
-                    
-                    
-                    
-                    
-                <li class="foot-menu-item mbr-fonts-style display-7"></li></ul>
-            </div>
             <div class="row social-row">
                 <div class="social-list align-right pb-2">
-
                 <div class="soc-item">
                         <a href="https://github.com/RathodDeven/CGVisualizer" target="_blank">
                             <span class="mbr-iconfont mbr-iconfont-social mbri-github"></span>
                         </a>
-                    </div></div>
+                </div>
+                <div class="soc-item">
+                    <a href="mailto:someone@example.com">devenrathodrd@gmail.com</a>
+                </div>
             </div>
             
         </div>
     </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/d" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Build a free site with <a href="https://mobirise.site/z" style="color:#aaa;">Mobirise</a></p></section><script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/popper/popper.min.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
+</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/j" style="color:#aaa;"></a></section><script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/popper/popper.min.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/parallax/jarallax.min.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
 <script src="js/polygon.js"></script>
 </body>
 </html>
