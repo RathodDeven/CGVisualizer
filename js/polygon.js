@@ -10,6 +10,11 @@ const done = document.getElementById('done');
 done.disabled=true;
 const add = document.getElementById('add');
 
+
+//fill elements
+const fill = document.getElementById('fill');
+fill.disabled = true;
+
 //translation elements
 const tx = document.getElementById('tx');
 const ty = document.getElementById('ty');
@@ -75,6 +80,7 @@ $('#add').click(function(){
     refxy.disabled = true;
     refxmy.disabled = true;
     shear.disabled = true;
+    fill.disabled = true;
 });
 
 //saving polygon
@@ -94,11 +100,11 @@ $('#done').click(function(){
     refxy.disabled = false;
     refxmy.disabled = false;
     shear.disabled = false;
+    fill.disabled = false;
 });
 
 
 //handling mouse events for drawing polygon
-
 $("#canvas").mousedown(function(e){handleMouseDown(e);});
 
 var cur = 0;
@@ -132,9 +138,10 @@ function drawPolygon(){
 
     // draw the current polygon
     if(coordinates.length>0){
-        context.strokeStyle = 'red';
+        context.strokeStyle = "#ff0000";
         context.moveTo(coordinates[0].x, coordinates[0].y);
         context.font = "15px Arial";
+        context.fillStyle = 'black';
         context.fillText(coordinates[0].letter + " (" + (coordinates[0].x-cw/2) + "," + (ch/2 -coordinates[0].y) + ")", coordinates[0].x,coordinates[0].y); 
         for(let index=1; index<coordinates.length;index++) {
             context.lineTo(coordinates[index].x, coordinates[index].y);
@@ -147,9 +154,10 @@ function drawPolygon(){
 
     for(let co of polygons){
         context.beginPath();
-        context.strokeStyle = 'red';
+        context.strokeStyle = "#ff0000";
         context.moveTo(co[0].x, co[0].y);
         context.font = "15px Arial";
+        context.fillStyle = 'black';
         context.fillText(co[0].letter + " (" + (co[0].x - cw/2) + "," + (ch/2 -co[0].y) + ")", co[0].x,co[0].y); 
         for(let index=1; index<co.length;index++) {
             context.lineTo(co[index].x, co[index].y);
@@ -162,6 +170,72 @@ function drawPolygon(){
     }
     
 }
+
+//for filling the polygon
+
+
+function getElementPosition(obj) {
+    var curleft = 0, curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curleft += obj.offsetLeft;
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+        return { x: curleft, y: curtop };
+    }
+    return undefined;
+}
+function getEventLocation(element,event){
+    // Relies on the getElementPosition function.
+    var pos = getElementPosition(element);
+    
+    return {
+    	x: (event.pageX - pos.x),
+      	y: (event.pageY - pos.y)
+    };
+}
+
+async function drawPixel (x, y) {
+    // context.rect(x,y, 1, 1);
+    context.fillStyle = "#ff0000";
+    context.fillRect(x,y,1,1);
+    await new Promise(r => setTimeout(r, 10));
+}
+
+function rgbToHex(r, g, b) {
+    if (r > 255 || g > 255 || b > 255)
+        throw "Invalid color component";
+    return ((r << 16) | (g << 8) | b).toString(16);
+}
+async function fillPolygon(x,y){
+    var p = context.getImageData(x,y,1,1).data;
+    if(rgbToHex(p[0],p[1],p[2])!="ff0000"){
+        await drawPixel(x,y);
+        fillPolygon(x-1,y);
+        fillPolygon(x+1,y);
+        fillPolygon(x,y-1);
+        fillPolygon(x,y+1);
+
+        // fillPolygon(x-1,y-1);
+        // fillPolygon(x+1,y-1);
+        // fillPolygon(x-1,y+1);
+        // fillPolygon(x+1,y+1);
+    }else{
+        return;
+    }
+}
+function handleClickOnCanvas(e){
+    fill.disabled= false;
+    canvas.removeEventListener('click',handleClickOnCanvas);
+    var eventLocation = getEventLocation(canvas,e);
+    fillPolygon(eventLocation.x,eventLocation.y);
+}
+
+fill.addEventListener('click',()=>{
+    fill.disabled = true;
+    canvas.addEventListener('click',handleClickOnCanvas);
+});
+
 
 //for reflection about origin
 $('#refo').click(function(){
@@ -312,6 +386,7 @@ function clear(){
     polygons = [];
     done.disabled = true;
     add.disabled = false;
+    fill.disabled = true;
     cur = 0;
 }
 

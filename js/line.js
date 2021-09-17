@@ -13,12 +13,10 @@ function line(x1,y1,x2,y2){
 
 
 function drawPixel (x, y) {
-
     ctx.rect(canvasWidth/2 + x,canvasHeight/2 - y, 1, 1);
     ctx.fillStyle = "red";
     ctx.fill();
 }
-console.log(canvasHeight + " " + canvasWidth);
 async function drawLine (x1, y1, x2, y2) {
     var len;
     if(Math.abs(x2-x1)>Math.abs(y2-y1)){
